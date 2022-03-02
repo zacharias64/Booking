@@ -11,6 +11,8 @@ namespace Book.Models
     {
         public string many1 { get; set; }
         public string many2 { get; set; }
+
+        public List<int> BookListId { get; set; }
     }
     
     

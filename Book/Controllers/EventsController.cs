@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Diagnostics;
+using Book.Models;
+
 namespace Book.Controllers
 {
     public class EventsController : Controller
@@ -35,15 +37,47 @@ namespace Book.Controllers
         }
         public ActionResult Order()
         {
-            string  Book1OrderNumber= Request["Many1"].ToString();
-            Session["Book1Number"] = Book1OrderNumber;
+            //string  Book1OrderNumber= Request["Many1"].ToString();
+
+            var number = Convert.ToInt32(Request["Many1"]);
+
+            Session["Book1Number"] = number;
+
+            var model = (Buying)Session["BookListId"];
+
+            if (model.BookListId.Contains(number) != true)
+            {
+                model.BookListId.Add(number);
+            }
+
+            Session["BookListId"] = model;
+
+
+            functionQQQ();
+
             return RedirectToAction("Comment");
         }
         public ActionResult Order1()
         {
-            string Book2OrderNumber = Request["Many2"].ToString();
-            Session["Book2Number"] = Book2OrderNumber;
+            var number = Convert.ToInt32(Request["Many2"]);
+
+            Session["Book1Number"] = number;
+
+            var model = (Buying)Session["BookListId"];
+
+            if (model.BookListId.Contains(number) != true)
+            {
+                model.BookListId.Add(number);
+            }
+
+            Session["BookListId"] = model;
+
             return RedirectToAction("Comment");
+        }
+
+        private void functionQQQ()
+        {
+            var a = 0;
         }
 
     }

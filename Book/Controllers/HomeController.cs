@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Diagnostics;
 using System.Web.SessionState;
+using Book.Models;
+
 namespace Book.Controllers
 {
     
@@ -15,6 +17,13 @@ namespace Book.Controllers
         public ActionResult Index()
         {
             ViewBag.place = "下列書籍";
+
+            var model = new Buying();
+
+            model.BookListId = new List<int>();
+
+            Session["BookListId"] = model;
+
             return View();
         }
 

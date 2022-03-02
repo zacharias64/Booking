@@ -9,59 +9,93 @@
 
     }*@
 @*booknumber:
-@ViewBag.book1
-@ViewBag.book2
-@Session["Book1Number"]
-@Session["Book2Number"]*@
-@switch (@Session["Book1Number"])
-    {
-        case "0":
-            <p>您未選取欲購買數量</p>
-            break;
-        case "1":
-            <p>您欲購買1本蕭珊克監獄的救贖</p>
-            break;
-        case "2":
-            <p>您欲購買2本蕭珊克監獄的救贖</p>
-            break;
-        case "3":
-            <p>您欲購買3本蕭珊克監獄的救贖</p>
-            break;
-        case "4":
-            <p>您欲購買4本蕭珊克監獄的救贖</p>
-            break;
-        case "5":
-            <p>您欲購買5本蕭珊克監獄的救贖</p>
-            break;
-        default:
-            <p></p>
-            break;
-    }
-    @switch (@Session["Book2Number"])
-    {
-        case "0":
-            <p>您未選取欲購買數量</p>
-            break;
-        case "1":
-            <p>您欲購買1本鬼店</p>
-            break;
-        case "2":
-            <p>您欲購買2本鬼店</p>
-            break;
-        case "3":
-            <p>您欲購買3本鬼店</p>
-            break;
-        case "4":
-            <p>您欲購買4本鬼店</p>
-            break;
-        case "5":
-            <p>您欲購買5本鬼店</p>
-            break;
-        default:
-            <p></p>
-            break;
-    }
+    @ViewBag.book1
+    @ViewBag.book2
+    @Session["Book1Number"]
+    @Session["Book2Number"]*@
 
+@if (Session["BookListId"] != null)
+{
+    var model = (Buying)Session["BookListId"];
+
+    foreach (var item in model.BookListId)
+    {
+        <p>您欲購買的 id @item</p>
+    }
+}
+
+
+
+
+
+
+
+@if (Convert.ToInt32(Session["Book1Number"]) == 0)
+{
+    <p>您未選取欲購買數量</p>
+}
+else if (Convert.ToInt32(Session["Book1Number"]) <= 5)
+{
+    <p>您欲購買@(Session["Book1Number"])本蕭珊克監獄的救贖</p>
+}
+else
+{
+    <p>tooooooo much</p>
+}
+
+@switch (@Session["Book1Number"])
+{
+    case "0":
+        <p>您未選取欲購買數量</p>
+        break;
+    case "1":
+        <p>您欲購買1本蕭珊克監獄的救贖</p>
+        break;
+    case "2":
+        <p>您欲購買2本蕭珊克監獄的救贖</p>
+        break;
+    case "3":
+        <p>您欲購買3本蕭珊克監獄的救贖</p>
+        break;
+    case "4":
+        <p>您欲購買4本蕭珊克監獄的救贖</p>
+        break;
+    case "5":
+        <p>您欲購買5本蕭珊克監獄的救贖</p>
+        break;
+    default:
+        <p></p>
+        break;
+}
+@switch (@Session["Book2Number"])
+{
+    case "0":
+        <p>您未選取欲購買數量</p>
+        break;
+    case "1":
+        <p>您欲購買1本鬼店</p>
+        break;
+    case "2":
+        <p>您欲購買2本鬼店</p>
+        break;
+    case "3":
+        <p>您欲購買3本鬼店</p>
+        break;
+    case "4":
+        <p>您欲購買4本鬼店</p>
+        break;
+    case "5":
+        <p>您欲購買5本鬼店</p>
+        break;
+    default:
+        <p></p>
+        break;
+}
+
+
+<button>
+    <a href="https://google.com">Home</a>
+</button>
 
 @using (Html.BeginForm("GoHome", "Events"))
 {
@@ -75,5 +109,3 @@
 {
     <input type="submit" value="回介紹頁2" />
 }
-
-abc1234
