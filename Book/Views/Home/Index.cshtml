@@ -1,0 +1,25 @@
+﻿@{ 
+    
+}
+<h4>@ViewBag.place<span> </span>現正促銷</h4>
+@using(Html.BeginForm("Comment", "Events"))
+{
+   <br/>
+<table>
+    <tr>
+        <th style="width:130px;">熱賣書籍</th>
+        <th>價格</th>
+    </tr>
+    <tr>
+        <td><a href="/Events/Bookintro1">蕭珊克監獄的救贖</a></td>
+        <td>299元</td>
+    </tr>
+    <tr>
+        <td><a href="/Events/Bookintro2">鬼店</a></td>
+        <td>399元</td>
+    </tr>
+</table>
+    <br/>
+    <input type="submit" value="購物車" />
+}
+

@@ -1,0 +1,44 @@
+﻿@using Book.Models
+@model Buying
+
+<br />
+<div class="d-flex">
+    <div><img src="~/Images/R.jpg" width="200" height="300"></div>
+    <div>
+        <h4>是一本由美國作家史蒂芬·金所寫的恐怖小說，於1977年出版。這是史蒂芬·金</h4>
+        <h4>發表的第三部小說，該書的成功牢固的奠定了他在此類小說流派中優秀作家的地</h4>
+        <h4>位。其設定和角色都是受史蒂芬·金的個人經歷所影響的，包括他在1974年住過</h4>
+        <h4>史丹利飯店，以及他從酗酒中康復過來。根據該書拍成的電影《鬼店》由史丹利</h4>
+        <h4>·庫柏力克導演，在1980年上映，但史蒂芬·金認為那沒有拍出他原著的風貌，所</h4>
+        <h4>以1997年依原著重拍成電視迷你劇《史蒂芬·金之鬼店》。小說續集是《安眠醫生</h4>
+        <h4>》，在2013年出版。</h4>
+
+    </div>
+</div>
+<br />
+
+@using (Html.BeginForm("Order1", "Events", FormMethod.Post))
+{
+    <p>欲購買數量:</p>
+    @Html.TextBox("many2", "1")
+    <input type="submit" value="加入購物車" />
+}
+
+<br />
+<br />
+<div class="d-flex">
+    <div>
+        @using (Html.BeginForm("GoHome", "Events"))
+        {
+            <input type="submit" value="回首頁" />
+        }
+    </div>
+    <div>
+        @using (Html.BeginForm("Comment", "Events"))
+        {
+            <input type="submit" value="購物車" />
+        }
+    </div>
+</div>
+
+

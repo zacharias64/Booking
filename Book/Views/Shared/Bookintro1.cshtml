@@ -1,0 +1,34 @@
+﻿@using Book.Models
+@model Buying
+
+<br />
+<div class="d-flex">
+    <div><img src="~/Images/OIP.jpg" width="200" height="300"></div>
+    <div>
+        <h4>這世上，恐怕沒有人比安迪更懂「絕望」的滋味。他原本是事業有成的銀行家</h4>
+        <h4>，卻因遭控殺妻而鋃鐺入獄，過著暗無天日的囚禁生活。而在這個一磚一瓦都</h4>
+        <h4>令人窒息的地方，安迪卻意外找到了他最迫切需要的東西──希望……</h4>
+    </div>
+</div>
+<br />
+@using (Html.BeginForm("Order", "Events", FormMethod.Post))
+{
+    <p>欲購買數量:</p>
+    @Html.TextBox("many1", "1")
+    <input type="submit" value="加入購物車" />
+}
+<br />
+<div class="d-flex">
+    <div>
+        @using (Html.BeginForm("GoHome", "Events"))
+        {
+            <input type="submit" value="回首頁" />
+        }
+    </div>
+    <div>
+        @using (Html.BeginForm("Comment", "Events"))
+        {
+            <input type="submit" value="購物車" />
+        }
+    </div>
+</div>

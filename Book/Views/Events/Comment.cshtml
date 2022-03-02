@@ -1,0 +1,77 @@
+﻿@using Book.Models
+@model Buying
+<h3>以下是您的購買清單:</h3>
+@*@{
+        string many1 = Request["many1"];
+        string many2 = Request["many2"];
+        Session["many1"] = many1;
+        Session["many2"] = many2;
+
+    }*@
+@*booknumber:
+@ViewBag.book1
+@ViewBag.book2
+@Session["Book1Number"]
+@Session["Book2Number"]*@
+@switch (@Session["Book1Number"])
+    {
+        case "0":
+            <p>您未選取欲購買數量</p>
+            break;
+        case "1":
+            <p>您欲購買1本蕭珊克監獄的救贖</p>
+            break;
+        case "2":
+            <p>您欲購買2本蕭珊克監獄的救贖</p>
+            break;
+        case "3":
+            <p>您欲購買3本蕭珊克監獄的救贖</p>
+            break;
+        case "4":
+            <p>您欲購買4本蕭珊克監獄的救贖</p>
+            break;
+        case "5":
+            <p>您欲購買5本蕭珊克監獄的救贖</p>
+            break;
+        default:
+            <p></p>
+            break;
+    }
+    @switch (@Session["Book2Number"])
+    {
+        case "0":
+            <p>您未選取欲購買數量</p>
+            break;
+        case "1":
+            <p>您欲購買1本鬼店</p>
+            break;
+        case "2":
+            <p>您欲購買2本鬼店</p>
+            break;
+        case "3":
+            <p>您欲購買3本鬼店</p>
+            break;
+        case "4":
+            <p>您欲購買4本鬼店</p>
+            break;
+        case "5":
+            <p>您欲購買5本鬼店</p>
+            break;
+        default:
+            <p></p>
+            break;
+    }
+
+
+@using (Html.BeginForm("GoHome", "Events"))
+{
+    <input type="submit" value="回首頁" />
+}
+@using (Html.BeginForm("Bookintro1", "Events"))
+{
+    <input type="submit" value="回介紹頁1" />
+}
+@using (Html.BeginForm("Bookintro2", "Events"))
+{
+    <input type="submit" value="回介紹頁2" />
+}
