@@ -2,43 +2,45 @@
 @model Buying
 
 <br />
-<div class="d-flex">
-    <div><img src="~/Images/R.jpg" width="200" height="300"></div>
-    <div>
-        <h4>是一本由美國作家史蒂芬·金所寫的恐怖小說，於1977年出版。這是史蒂芬·金</h4>
-        <h4>發表的第三部小說，該書的成功牢固的奠定了他在此類小說流派中優秀作家的地</h4>
-        <h4>位。其設定和角色都是受史蒂芬·金的個人經歷所影響的，包括他在1974年住過</h4>
-        <h4>史丹利飯店，以及他從酗酒中康復過來。根據該書拍成的電影《鬼店》由史丹利</h4>
-        <h4>·庫柏力克導演，在1980年上映，但史蒂芬·金認為那沒有拍出他原著的風貌，所</h4>
-        <h4>以1997年依原著重拍成電視迷你劇《史蒂芬·金之鬼店》。小說續集是《安眠醫生</h4>
-        <h4>》，在2013年出版。</h4>
 
+
+<br />
+<div class="container">
+    <div class="grid_1 ">
+        <div class="grid_2 alpha">
+            <img width="250" height="361" src="~/content/Images/guidien.jpg">
+        </div>
+        <div class="grid_1 alphaa">
+            <div class="mod type02_p002">
+                <h1 id="aq">鬼店</h1>
+            </div>
+            <div class="type02_p003">
+                <ul>
+                    <li>原文書名：The Shining</li>
+                    <li>作者：史蒂芬金</li>
+                    <li>出版年份：1977</li>
+                    <li>出版社：皇冠出版事業股份有限公司</li>
+                    <li>ISBN：9789573254003</li>
+                    <li>譯者：黃意然</li>
+                    <li>語言：繁體中文</li>
+                    <li>售價: <span class="red"> 279</span>元</li>
+                    <li>
+                        @using (Html.BeginForm("Order1", "Events", FormMethod.Post))
+                        {
+                            <b>欲購買數量:</b> @Html.TextBox("many2", "1", new { style = "width: 30px;" }) <b>本</b>
+                            <p><input type="submit" value="加入購物車" /></p>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <div class="grid_1" style="height:auto;">
+        <a>&nbsp;</a>
+        <h3>內容介紹</h3>
+        <h4 class="font">
+            就在那個房間裡，透過拉起來的浴簾，他彷彿看到一個模糊的女人形體躺在浴缸裡──正如兒子丹尼所說的。即使關上了門，他仍恍似聽見那個死去多時的女人正爬出浴缸，要來歡迎她的訪客。傑克知道兒子常會看見一些奇怪的景象，有時甚至能感覺到「未來」才會發生的事。但他自己呢？難道他也發瘋了，就像第一任的冬季管理員那樣？多年前，第一任冬季管理員同樣是帶著全家赴任，最後卻突然發狂，先是拿斧頭活活砍死兩名幼女，再用獵槍殺害妻子後自殺！即使聽說了這場駭人的悲劇，傑克仍決定來這家著名的高山渡假飯店「全景」擔任冬季管理員，並帶著妻子溫蒂與五歲的丹尼同行。整個嚴冬休館期間，通往外界的路會被惡雪冰封，而他們一家人也將與世隔絕半年。但他別無選擇。曾是備受歡迎的名校老師、文壇新星，卻因酗酒和痛毆學生而變得一無所有，「全景」是他翻身的最後希望，他將在這裡完成偉大的巨著，然後討回那些他所應得的一切！他需要「全景」，然而傑克並不知道，「全景」也正等待著他……
+        </h4>
+    </div>
+
 </div>
-<br />
-
-@using (Html.BeginForm("Order1", "Events", FormMethod.Post))
-{
-    <p>欲購買數量:</p>
-    @Html.TextBox("many2", "1")
-    <input type="submit" value="加入購物車" />
-}
-
-<br />
-<br />
-<div class="d-flex">
-    <div>
-        @using (Html.BeginForm("GoHome", "Events"))
-        {
-            <input type="submit" value="回首頁" />
-        }
-    </div>
-    <div>
-        @using (Html.BeginForm("Comment", "Events"))
-        {
-            <input type="submit" value="購物車" />
-        }
-    </div>
-</div>
-
-

@@ -33,6 +33,7 @@ namespace Book.Controllers
         }
         public ActionResult Comment()
         {
+            
             return View();
         }
         public ActionResult Order()
@@ -40,9 +41,9 @@ namespace Book.Controllers
             //string  Book1OrderNumber= Request["Many1"].ToString();
 
             var number = Convert.ToInt32(Request["Many1"]);
-
+            var money = 299;
             Session["Book1Number"] = number;
-
+            Session["Book1Money"]= number*money;
             var model = (Buying)Session["BookListId"];
 
             if (model.BookListId.Contains(number) != true)
@@ -51,17 +52,15 @@ namespace Book.Controllers
             }
 
             Session["BookListId"] = model;
-
-
-            functionQQQ();
 
             return RedirectToAction("Comment");
         }
         public ActionResult Order1()
         {
             var number = Convert.ToInt32(Request["Many2"]);
-
-            Session["Book1Number"] = number;
+            var money = 279;
+            Session["Book2Money"] = number * money;
+            Session["Book2Number"] = number;
 
             var model = (Buying)Session["BookListId"];
 
@@ -75,10 +74,7 @@ namespace Book.Controllers
             return RedirectToAction("Comment");
         }
 
-        private void functionQQQ()
-        {
-            var a = 0;
-        }
+        
 
     }
 }

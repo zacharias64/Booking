@@ -2,33 +2,42 @@
 @model Buying
 
 <br />
-<div class="d-flex">
-    <div><img src="~/Images/OIP.jpg" width="200" height="300"></div>
-    <div>
-        <h4>這世上，恐怕沒有人比安迪更懂「絕望」的滋味。他原本是事業有成的銀行家</h4>
-        <h4>，卻因遭控殺妻而鋃鐺入獄，過著暗無天日的囚禁生活。而在這個一磚一瓦都</h4>
-        <h4>令人窒息的地方，安迪卻意外找到了他最迫切需要的東西──希望……</h4>
+<div class="container">
+    <div class="grid_1 ">
+        <div class="grid_2 alpha">
+            <img src="/content/Images/xiao.jpg">
+        </div>
+        <div class="grid_1 alphaa">
+            <div class="mod type02_p002">
+                <h1 id="aq">四季奇談:蕭山客監獄的救贖</h1>
+            </div>
+            <div class="type02_p003">
+                <ul>
+                    <li>原文書名：Rita Hayworth And Shawshank Redemption</li>
+                    <li>作者：史蒂芬金</li>
+                    <li>出版年份：1982</li>
+                    <li>出版社：遠流出版事業股份有限公司</li>
+                    <li>ISBN：9789573254003</li>
+                    <li>譯者：施寄青、 趙永芬、齊若蘭</li>
+                    <li>語言：繁體中文</li>
+                    <li>售價: <span class="red"> 299</span>元</li>
+                    <li>
+                        @using (Html.BeginForm("Order", "Events", FormMethod.Post))
+                        {
+                            <b>欲購買數量:</b> @Html.TextBox("many1", "1", new { style = "width: 30px;" }) <b>本</b>
+                            <p><input type="submit" value="加入購物車" /></p>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
-<br />
-@using (Html.BeginForm("Order", "Events", FormMethod.Post))
-{
-    <p>欲購買數量:</p>
-    @Html.TextBox("many1", "1")
-    <input type="submit" value="加入購物車" />
-}
-<br />
-<div class="d-flex">
-    <div>
-        @using (Html.BeginForm("GoHome", "Events"))
-        {
-            <input type="submit" value="回首頁" />
-        }
+    <div class="grid_1" style="height:auto;">
+        <a>&nbsp;</a>
+        <h3>內容介紹</h3>
+        <h4 class="font">
+            《蕭山克的救贖》大陸譯名《肖申克的救贖》，是史蒂芬．金小說《四季奇譚》中的一篇中篇小說，原名《麗塔海華絲與蕭山克監獄的救贖》－春天的希望。故事由一名拘留在蕭山克監獄（又譯鯊堡監獄）的愛爾蘭人囚犯描述他所認識的一名含冤入獄的囚犯「安迪．杜佛尼」如何在漫長的牢獄歲月裡，做出各種令人意想不到的奇行；以及在最後數十年來的日子中，如何躲過典獄長等人的監視、逃離蕭山克監獄獲得他應得的自由的經過。為電影《刺激1995》的原著。 作者史蒂芬．愛德溫．金（Stephen Edwin King，1947年9月21日－），是一位作品多產、屢獲獎項的美國暢銷書作家，編寫過劇本、專欄評論，曾擔任電影導演、製片人以及演員。史蒂芬．金以恐怖小說著稱，他的作品還包括科幻小說、奇幻小說、短篇小說、非小說、影視劇本及舞台劇劇本。大多數的作品都曾被改編到其它媒體，像是電影、電視影集和漫畫書上。他在2003年獲得美國國家圖書獎終身成就獎。
+        </h4>
     </div>
-    <div>
-        @using (Html.BeginForm("Comment", "Events"))
-        {
-            <input type="submit" value="購物車" />
-        }
+
     </div>
-</div>

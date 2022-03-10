@@ -1,20 +1,8 @@
 ﻿@using Book.Models
 @model Buying
-<h3>以下是您的購買清單:</h3>
-@*@{
-        string many1 = Request["many1"];
-        string many2 = Request["many2"];
-        Session["many1"] = many1;
-        Session["many2"] = many2;
 
-    }*@
-@*booknumber:
-    @ViewBag.book1
-    @ViewBag.book2
-    @Session["Book1Number"]
-    @Session["Book2Number"]*@
 
-@if (Session["BookListId"] != null)
+@*@if (Session["BookListId"] != null)
 {
     var model = (Buying)Session["BookListId"];
 
@@ -22,15 +10,9 @@
     {
         <p>您欲購買的 id @item</p>
     }
-}
+}*@
 
-
-
-
-
-
-
-@if (Convert.ToInt32(Session["Book1Number"]) == 0)
+@*@if (Convert.ToInt32(Session["Book1Number"]) == 0)
 {
     <p>您未選取欲購買數量</p>
 }
@@ -41,71 +23,65 @@ else if (Convert.ToInt32(Session["Book1Number"]) <= 5)
 else
 {
     <p>tooooooo much</p>
-}
+}*@
 
-@switch (@Session["Book1Number"])
-{
-    case "0":
-        <p>您未選取欲購買數量</p>
-        break;
-    case "1":
-        <p>您欲購買1本蕭珊克監獄的救贖</p>
-        break;
-    case "2":
-        <p>您欲購買2本蕭珊克監獄的救贖</p>
-        break;
-    case "3":
-        <p>您欲購買3本蕭珊克監獄的救贖</p>
-        break;
-    case "4":
-        <p>您欲購買4本蕭珊克監獄的救贖</p>
-        break;
-    case "5":
-        <p>您欲購買5本蕭珊克監獄的救贖</p>
-        break;
-    default:
-        <p></p>
-        break;
-}
-@switch (@Session["Book2Number"])
-{
-    case "0":
-        <p>您未選取欲購買數量</p>
-        break;
-    case "1":
-        <p>您欲購買1本鬼店</p>
-        break;
-    case "2":
-        <p>您欲購買2本鬼店</p>
-        break;
-    case "3":
-        <p>您欲購買3本鬼店</p>
-        break;
-    case "4":
-        <p>您欲購買4本鬼店</p>
-        break;
-    case "5":
-        <p>您欲購買5本鬼店</p>
-        break;
-    default:
-        <p></p>
-        break;
-}
+<br />
+<h2 id="lef">以下是您的購買清單</h2>
+<table>
+    <tr>
+        <th style="width:130px;">圖片</th>
+        <th style="width:160px;">書籍名稱</th>
+        <th>作者</th>
+        <th>數量</th>
+        <th>價格</th>
+        <th>總額</th>
+    </tr>
+    <tr>
+        @if (Convert.ToInt32(Session["Book1Number"]) == 0)
+        { }
+        else if (Convert.ToInt32(Session["Book1Number"]) <= 100)
+        {
+            <td><a href="/Events/Bookintro1"><img src="/content/Images/xiao.jpg" width="80"></a></td>
+            <td><a href="/Events/Bookintro1">蕭珊克監獄的救贖</a></td>
+            <td><b>史蒂芬·金</b></td>
+            <td><b>@(Session["Book1Number"])</b></td>
+            <td><b><span class="red"> 299</span>元</b></td>
+            <td><b><span class="red"> @Session["Book1Money"]</span>元</b></td>
+        }
+        else
+        {
+            <td><a href="/Events/Bookintro1"><img src="/content/Images/xiao.jpg" width="80"></a></td>
+            <td><a href="/Events/Bookintro1">鬼店</a></td>
+            <td><b>史蒂芬·金</b></td>
+            <td><span class="red">超出庫存</span></td>
+            <td><b><span class="red"> 299</span>元</b></td>
+            <td><b><span class="red"> @Session["Book1Money"]</span>元</b></td>
+        }
+    </tr>
+    <tr>
+        @if (Convert.ToInt32(Session["Book2Number"]) == 0)
+        { }
+        else if (Convert.ToInt32(Session["Book2Number"]) <= 100)
+        {
+            <td><a href="/Events/Bookintro2"><img src="/content/Images/guidien.jpg" width="80"></a></td>
+            <td><a href="/Events/Bookintro2">鬼店</a></td>
+            <td><b>史蒂芬·金</b></td>
+            <td><b>@(Session["Book2Number"])</b></td>
+            <td><b><span class="red"> 279</span>元</b></td>
+            <td><b><span class="red"> @Session["Book2Money"]</span>元</b></td>
+        }
+        else
+        {
+            <td><a href="/Events/Bookintro2"><img src="/content/Images/guidien.jpg" width="80"></a></td>
+            <td><a href="/Events/Bookintro2">鬼店</a></td>
+            <td><b>史蒂芬·金</b></td>
+            <td><span class="red">超出庫存</span></td>
+            <td><b><span class="red"> 279</span>元</b></td>
+            <td><b><span class="red"> @Session["Book2Money"]</span>元</b></td>
+        }
 
-
-<button>
-    <a href="https://google.com">Home</a>
-</button>
-
-@using (Html.BeginForm("GoHome", "Events"))
-{
-    <input type="submit" value="回首頁" />
-}
-@using (Html.BeginForm("Bookintro1", "Events"))
-{
-    <input type="submit" value="回介紹頁1" />
-}
-@using (Html.BeginForm("Bookintro2", "Events"))
-{
-    <input type="submit" value="回介紹頁2" />
-}
+    </tr>
+</table>
+@{ var AmountMoney = Convert.ToInt32(Session["Book1Money"]) + Convert.ToInt32(Session["Book2Money"]);}
+<h2 id="lef"><b>總金額為:<span class="red">  @AmountMoney</span>元</b> </h2>
+<br />

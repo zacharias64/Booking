@@ -1,25 +1,35 @@
-﻿@{ 
+﻿@*@{ 
     
-}
-<h4>@ViewBag.place<span> </span>現正促銷</h4>
-@using(Html.BeginForm("Comment", "Events"))
-{
+}*@
+
    <br/>
+   <h2 id="lef">首頁</h2>
 <table>
     <tr>
-        <th style="width:130px;">熱賣書籍</th>
+        <th style="width:130px;">圖片</th>
+        <th style="width:130px;">書籍名稱</th>
+        <th>作者</th>
+        <th>出版年份</th>
         <th>價格</th>
     </tr>
     <tr>
+        <td><a href="/Events/Bookintro1"><img src="/content/Images/xiao.jpg" width="80"></a></td>
         <td><a href="/Events/Bookintro1">蕭珊克監獄的救贖</a></td>
+        <td>史蒂芬·金</td>
+        <td>1982年</td>
         <td>299元</td>
     </tr>
     <tr>
+        <td><a href="/Events/Bookintro2"><img src="/content/Images/guidien.jpg" width="80"></a></td>
         <td><a href="/Events/Bookintro2">鬼店</a></td>
-        <td>399元</td>
+        <td>史蒂芬·金</td>
+        <td>1977年</td>
+        <td>279元</td>
     </tr>
 </table>
     <br/>
-    <input type="submit" value="購物車" />
-}
+   
+
+
+
 
