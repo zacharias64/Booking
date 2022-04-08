@@ -20,6 +20,28 @@ namespace Book.Controllers
 
             return View();
         }
+
+        public ActionResult BookIntro(int Id)
+        {
+            //ViewBag.Id = Id;
+            // get data from db by parameter id
+
+            ViewBag.BookId = new FakeDB().GetBook(Id).bId;
+            ViewBag.BookTitle = new FakeDB().GetBook(Id).bTitle;
+            ViewBag.BookOriginal = new FakeDB().GetBook(Id).bOriginal;
+            ViewBag.BookYear = new FakeDB().GetBook(Id).bYear;
+            ViewBag.BookAuthor = new FakeDB().GetBook(Id).bAuthor;
+            ViewBag.BookPubHouse = new FakeDB().GetBook(Id).bPubHouse;
+            ViewBag.BookISBN = new FakeDB().GetBook(Id).bISBN;
+            ViewBag.BookTrans = new FakeDB().GetBook(Id).bTrans;
+            ViewBag.BookMoney = new FakeDB().GetBook(Id).bMoney;
+            ViewBag.BookLaun = new FakeDB().GetBook(Id).bLaun;
+            ViewBag.BookIntroduce = new FakeDB().GetBook(Id).bIntroduce;
+            ViewBag.BookPic = new FakeDB().GetBook(Id).bPic;
+
+            return View();
+        }
+
         public ActionResult Bookintro1()
         {
 

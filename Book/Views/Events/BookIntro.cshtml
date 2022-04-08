@@ -1,0 +1,57 @@
+﻿@using Book.Models
+@model Buying
+
+<br />
+<div class="container">
+    <div class="grid_1 ">
+        <div class="grid_2 alpha">
+            <img width="250" height="361" src="@ViewBag.BookPic">
+        </div>
+        <div class="grid_1 alphaa">
+            <div class="mod type02_p002">
+                <h1 id="aq">@ViewBag.BookTitle</h1>
+            </div>
+            <div class="type02_p003">
+                <ul>
+                    <li>原文書名：@ViewBag.BookOriginal</li>
+                    <li>作者：@ViewBag.BookAuthor</li>
+                    <li>出版年份：@ViewBag.BookYear</li>
+                    <li>出版社：@ViewBag.BookPubHouse</li>
+                    <li>ISBN：@ViewBag.BookISBN</li>
+                    <li>譯者：@ViewBag.BookTrans</li>
+                    <li>語言：@ViewBag.BookLaun</li>
+                    <li>售價: <span class="red"> @ViewBag.BookMoney</span>元</li>
+                    <li>
+                        @if(@ViewBag.BookId == 1)
+                        {
+                            using (Html.BeginForm("Order", "Events", FormMethod.Post))
+                            {
+                            
+                                <b>欲購買數量:</b> @Html.TextBox("many1", "1", new { style = "width: 30px;" }) <b>本</b>
+                                <p><input type="submit" value="加入購物車" /></p>
+                            }
+                        }
+                        @if(@ViewBag.BookId == 2)
+                        {
+                            using (Html.BeginForm("Order1", "Events", FormMethod.Post))
+                            {
+                            
+                                <b>欲購買數量:</b> @Html.TextBox("many2", "1", new { style = "width: 30px;" }) <b>本</b>
+                                <p><input type="submit" value="加入購物車" /></p>
+                            }
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="grid_1" style="height:auto;">
+        <a>&nbsp;</a>
+        <h3>內容介紹</h3>
+        
+        <h4 class="font">
+            @ViewBag.BookIntroduce
+        </h4>
+    </div>
+
+</div>

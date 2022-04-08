@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title 線上書店</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -17,10 +19,10 @@
             <h1><img src="/content/Images/book.png">  線上書店</h1>
         </div>
         <div class="menuStyle">
-            <a href="/">首頁</a>
-            <a href="/Events/Bookintro1">介紹頁1</a>
-            <a href="/Events/Bookintro2">介紹頁2</a>
-            <a href="/Events/Comment">購物車</a>
+            <a href="/"><span class="material-icons-outlined">home</span>首頁</a>
+            <a href="/Events/Bookintro?Id=1"><span class="material-icons-outlined">bookmark_border</span>介紹頁</a>
+            <a href="/Events/Bookintro?Id=2"><span class="material-icons-outlined">bookmark_border</span>介紹頁</a>
+            <a href="/Events/Comment"><span class="material-icons-outlined">shopping_cart</span>購物車</a>
         </div>
         @RenderBody()
 

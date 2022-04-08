@@ -133,6 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Buying.cs" />
+    <Compile Include="Models\FakeDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +180,7 @@
     <Content Include="Views\Shared\Bookintro1.cshtml" />
     <Content Include="Views\Shared\Bookintro2.cshtml" />
     <Content Include="Views\Events\Comment.cshtml" />
+    <Content Include="Views\Events\BookIntro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
