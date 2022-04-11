@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Diagnostics;
 using System.Web.SessionState;
-using Book.Models;
 
 namespace Book.Controllers
 {
@@ -14,20 +13,34 @@ namespace Book.Controllers
    
     public class HomeController : Controller
     {
+        //public ActionResult Index()
+        //{
+        //    ViewBag.place = "下列書籍";
+
+        //    var model = new Buying();
+
+        //    model.BookListId = new List<int>();
+
+        //    Session["BookListId"] = model;
+
+        //    return View();
+        //}
         public ActionResult Index()
         {
-            ViewBag.place = "下列書籍";
-
-            var model = new Buying();
-
-            model.BookListId = new List<int>();
-
-            Session["BookListId"] = model;
-
-            return View();
+            // GET: Entity
+            //宣告回傳商品列表result
+            List<Models.BookList> results = new List<Models.BookList>();
+            //使用CartsEntity類別 名稱玩db
+            using (Models.AllBookEntities db = new Models.AllBookEntities())
+            {
+                //使用Linq抓取目前Products資料庫的所有資料
+                results = (from s in db.BookList select s).ToList();
+                //將result回傳給檢視
+                return View(results);
+            }
         }
 
-       
+
 
 
         public ActionResult About()
