@@ -17,7 +17,7 @@
           <Property Name="bPubHouse" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="bISBN" Type="bigint" Nullable="false" />
           <Property Name="bTrans" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="bMoney" Type="int" Nullable="false" />
+          <Property Name="bMoney" Type="decimal" Precision="28" Scale="0" Nullable="false" />
           <Property Name="bLaun" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="bIntroduce" Type="nvarchar(max)" Nullable="false" />
           <Property Name="bURL" Type="nvarchar(max)" Nullable="false" />
@@ -42,7 +42,7 @@
           <Property Name="bPubHouse" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="bISBN" Type="Int64" Nullable="false" />
           <Property Name="bTrans" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="bMoney" Type="Int32" Nullable="false" />
+          <Property Name="bMoney" Type="Decimal" Precision="28" Scale="0" Nullable="false" />
           <Property Name="bLaun" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="bIntroduce" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="bURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />

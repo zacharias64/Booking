@@ -48,8 +48,8 @@
                     <p>作者:@booklist.bAuthor</p>
                     <p class="red">價格:@booklist.bMoney</p>
                     <p>
-                        <a href="#" class="btn btn-primary" role="button">加入購物車</a>
-                        <a href="#" class="btn btn-default" role="button">詳細資訊</a>
+                        <a href="javascript:void(0);" onclick="AddToCart('@booklist.bId')" class="btn btn-primary" role="button">加入購物車</a>
+                        <a href="@Url.Action("Details",new { id =booklist.bId})" class="btn btn-default" role="button">詳細資訊</a>
                     </p>
                 </div>
             </div>

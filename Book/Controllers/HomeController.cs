@@ -39,6 +39,24 @@ namespace Book.Controllers
                 return View(results);
             }
         }
+        public ActionResult Details(int? id)
+        {
+            using (Models.AllBookEntities db = new Models.AllBookEntities())
+            {
+                var result = (from s in db.BookList
+                              where s.bId == id
+                              select s).FirstOrDefault();
+
+                if (result == default(Models.BookList))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(result);
+                }
+            }
+        }
 
 
 

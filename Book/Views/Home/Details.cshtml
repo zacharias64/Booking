@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="container">
+    <div class="grid_1 ">
+        <div class="grid_2 alpha">
+            <img width="250" height="361" src="@Model.bURL">
+        </div>
+        <div class="grid_1 alphaa">
+            <div class="mod type02_p002">
+                <h1 id="aq">@ViewBag.BookTitle</h1>
+            </div>
+            <div class="type02_p003">
+                <ul>
+                    <li>原文書名：@Model.bOriginal</li>
+                    <li>作者：@Model.bAuthor</li>
+                    <li>出版年份：@Model.bYear</li>
+                    <li>出版社：@Model.bPubHouse</li>
+                    <li>ISBN：@Model.bISBN</li>
+                    <li>譯者：@Model.bTrans</li>
+                    <li>語言：@Model.bLaun</li>
+                    <li>售價: <span class="red"> @Model.bMoney</span>元</li>
+                    <li>
+                        @using (Html.BeginForm("Order", "Events", FormMethod.Post))
+                            {
+
+                                <b>欲購買數量:</b> @Html.TextBox("many1", "1", new { style = "width: 30px;" }) <b>本</b>
+                                <p><input type="submit" value="加入購物車" /></p>
+                            }
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="grid_1" style="height:auto;">
+        <a>&nbsp;</a>
+        <h3>內容介紹</h3>
+
+        <h4 class="font">
+            @Model.bIntroduce
+        </h4>
+    </div>
+
+</div>
+
+

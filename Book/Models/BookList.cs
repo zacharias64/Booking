@@ -22,7 +22,7 @@ namespace Book.Models
         public string bPubHouse { get; set; }
         public long bISBN { get; set; }
         public string bTrans { get; set; }
-        public int bMoney { get; set; }
+        public decimal bMoney { get; set; }
         public string bLaun { get; set; }
         public string bIntroduce { get; set; }
         public string bURL { get; set; }

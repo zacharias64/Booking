@@ -7,12 +7,72 @@
     <title>@ViewBag.Title 線上書店</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //網頁載入完成時，執行的 function
+            console.log("Ready!");
+        });
 
+        function AddToCart(productId) {
+            //加入編號為 productId 的商品到購物車
+            //<param name="productId">The product identifier.</param>
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data: { id: productId },
+                error: function (message) {
+                    console.log(message)
+                },
+                success: function (message) {
+                    $('li#Cart').html(message);
+                    console.log(productId + "已加入");
+                }
+            });
+
+        }
+
+        
+        function RemoveFromCart(productId) {
+           
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RemoveFromCart","Cart")',
+                data: { id: productId },
+                error: function (message) {
+                    console.log(message);
+                },
+                success: function (message) {
+                    //// 將回傳的購物車頁面，填入 li#Car
+                    $('li#Cart').html(message);
+                    console.log(productId + "已刪除");
+                }
+            });
+        }
+
+        function ClearCart() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ClearCart","Cart")',
+                data: {},
+                error: function (message) {
+                    console.log(message);
+                },
+                success: function (message) {
+                    $('li#Cart').html(message);
+                    console.log("已清空");
+                }
+            });
+        }
+
+    </script>
 </head>
 
 <body>
-    
+
     <div class="container">
 
         <div id="header">
@@ -20,14 +80,24 @@
         </div>
         <div class="menuStyle">
             <a href="/"><span class="material-icons-outlined">home</span>首頁</a>
-            <a href="/Events/Bookintro?Id=1"><span class="material-icons-outlined">bookmark_border</span>介紹頁</a>
-            <a href="/Events/Bookintro?Id=2"><span class="material-icons-outlined">bookmark_border</span>介紹頁</a>
-            <a href="/Events/Comment"><span class="material-icons-outlined">shopping_cart</span>購物車</a>
+            @*<a href="/Events/Comment"><span class="material-icons-outlined">shopping_cart</span>購物車</a>*@
+            <a href="/"><span class="material-icons-outlined">arrow_circle_up</span>新增書籍</a>
+            <a href="/"><span class="material-icons-outlined">edit</span>編輯書籍</a>
+            <a href="https://isbn.ncl.edu.tw/NEW_ISBNNet/H30_SearchBooks.php?&Pact=DisplayAll"><span class="material-icons-outlined">bookmark_border</span>書碼查詢</a>
+            <div class="navbar-collapse collapse nav navbar-nav">
+                <ul class="nav navbar-nav">
+                    <li id="Cart">@Html.Partial("_CartPartial")</li>
+                </ul>
+            </div>
         </div>
         @RenderBody()
 
-        
+
     </div>
     
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
