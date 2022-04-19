@@ -15,6 +15,7 @@ namespace Book.Controllers
             var Cart = Models.Cart.Operation.GetCurrentCart();
             Cart.AddProduct(1);
 
+            //test
 
             return Content($"目前購物車總共：{Cart.TotalAmount} 元");
         }
