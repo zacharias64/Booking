@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title 管理後臺</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
+    </head>
+
+        <body>
+
+            <div class="container">
+
+                <div id="header">
+                    <h1><img src="/content/Images/book.png">  管理後臺</h1>
+                </div>
+                <div class="menuStyle">
+                    <a href="/"><span class="material-icons-outlined">home</span>首頁預覽</a>
+                    @*<a href="/Events/Comment"><span class="material-icons-outlined">shopping_cart</span>購物車</a>*@
+                    <a href="/Edit/Create"><span class="material-icons-outlined">arrow_circle_up</span>新增書籍</a>
+                    <a href="/Edit/Index"><span class="material-icons-outlined">edit</span>上架列表</a>
+                    <a href="https://isbn.ncl.edu.tw/NEW_ISBNNet/H30_SearchBooks.php?&Pact=DisplayAll"><span class="material-icons-outlined">bookmark_border</span>書碼查詢</a>
+                    
+                </div>
+                @RenderBody()
+
+
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            @RenderSection("scripts", required: false)
+        </body>
+</html>

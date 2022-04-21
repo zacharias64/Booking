@@ -428,3 +428,29 @@ b{
     line-height: 1.5em;
     font-size: 17px;
 }
+
+.cusbutton {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+    text-decoration: none;
+    clear: both;
+    display: inline-block;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px;
+    background: #5e5b54;
+    -webkit-appearance: button;
+    cursor: pointer;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    user-select: none;
+    font: inherit;
+    margin: 10;
+}

@@ -21,6 +21,7 @@
           <Property Name="bLaun" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="bIntroduce" Type="nvarchar(max)" Nullable="false" />
           <Property Name="bURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="bQuan" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="AllBookModelStoreContainer">
           <EntitySet Name="BookList" EntityType="Self.BookList" Schema="dbo" store:Type="Tables" />
@@ -46,8 +47,9 @@
           <Property Name="bLaun" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="bIntroduce" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="bURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bQuan" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="AllBookEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AllBookEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BookList" EntityType="Self.BookList" />
         </EntityContainer>
       </Schema>
@@ -55,7 +57,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AllBookModelStoreContainer" CdmEntityContainer="AllBookEntities">
+        <EntityContainerMapping StorageEntityContainer="AllBookModelStoreContainer" CdmEntityContainer="AllBookEntities1">
           <EntitySetMapping Name="BookList">
             <EntityTypeMapping TypeName="AllBookModel.BookList">
               <MappingFragment StoreEntitySet="BookList">
@@ -71,6 +73,7 @@
                 <ScalarProperty Name="bLaun" ColumnName="bLaun" />
                 <ScalarProperty Name="bIntroduce" ColumnName="bIntroduce" />
                 <ScalarProperty Name="bURL" ColumnName="bURL" />
+                <ScalarProperty Name="bQuan" ColumnName="bQuan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,20 +11,35 @@ namespace Book.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class BookList
     {
+        [Display(Name = "編號")]
         public int bId { get; set; }
+        [Display(Name = "書名")]
         public string bTitle { get; set; }
+        [Display(Name = "英文書名")]
         public string bOriginal { get; set; }
+        [Display(Name = "作者")]
         public string bAuthor { get; set; }
+        [Display(Name = "出版年份")]
         public int bYear { get; set; }
+        [Display(Name = "出版商")]
         public string bPubHouse { get; set; }
+        [Display(Name = "ISBN碼")]
         public long bISBN { get; set; }
+        [Display(Name = "譯者")]
         public string bTrans { get; set; }
+        [Display(Name = "價格")]
         public decimal bMoney { get; set; }
+        [Display(Name = "語言")]
         public string bLaun { get; set; }
+        [Display(Name = "介紹")]
         public string bIntroduce { get; set; }
+        [Display(Name = "圖片編號")]
         public string bURL { get; set; }
+        [Display(Name = "數量")]
+        public int bQuan { get; set; }
     }
 }

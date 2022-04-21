@@ -60,7 +60,7 @@ namespace Book.Models.Cart
             if (FindItem == default(Models.Cart.CartItem))
             {
                 //若不存在於購物車內，則新增一筆
-                using (Models.AllBookEntities db = new AllBookEntities())
+                using (Models.AllBookEntities1 db = new AllBookEntities1())
                 {
                     var product = db.BookList.Where(w => w.bId == bId)
                         .Select(s => s).FirstOrDefault();
