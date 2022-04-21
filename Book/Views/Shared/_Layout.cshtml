@@ -9,8 +9,10 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
+    
+
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Symbols+Outlined" rel="stylesheet" />
     <script type="text/javascript">
         $(document).ready(function () {
             //網頁載入完成時，執行的 function
@@ -35,9 +37,9 @@
 
         }
 
-        
+
         function RemoveFromCart(productId) {
-           
+
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("RemoveFromCart","Cart")',
@@ -79,10 +81,13 @@
             <h1><img src="/content/Images/book.png">  線上書店</h1>
         </div>
         <div class="menuStyle">
+
             <a href="/"><span class="material-icons-outlined">home</span>首頁</a>
+            <a href="/Member/Register"><span class="material-symbols-outlined">face_retouching_natural</span>註冊</a>
+            <a href="/Member/Login"><span class="material-symbols-outlined">supervised_user_circle</span>登入</a>
             @*<a href="/Events/Comment"><span class="material-icons-outlined">shopping_cart</span>購物車</a>*@
             @*<a href="/Edit/Create"><span class="material-icons-outlined">arrow_circle_up</span>新增書籍</a>*@
-            <a href="/Edit/Edit"><span class="material-icons-outlined">account_circle</span>會員中心</a>
+            <a href="/Member/EditProfile"><span class="material-icons-outlined">account_circle</span>會員中心</a>
             <a href="https://isbn.ncl.edu.tw/NEW_ISBNNet/H30_SearchBooks.php?&Pact=DisplayAll"><span class="material-icons-outlined">bookmark_border</span>書碼查詢</a>
             <div class="navbar-collapse collapse nav navbar-nav">
                 <ul class="nav navbar-nav">
@@ -94,7 +99,7 @@
 
 
     </div>
-    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

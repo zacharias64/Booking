@@ -133,6 +133,7 @@
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -155,11 +156,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Books.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Buying.cs" />
+    <Compile Include="Models\Member\MemberModel.cs" />
+    <Compile Include="Models\OldVer\Buying.cs" />
     <Compile Include="Models\Cart\Cart.cs" />
     <Compile Include="Models\Cart\CartItem.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
-    <Compile Include="Models\FakeDB.cs" />
+    <Compile Include="Models\OldVer\FakeDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +233,9 @@
     <Content Include="Views\Edit\Create.cshtml" />
     <Content Include="Views\Edit\Edit.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Member\Register.cshtml" />
+    <Content Include="Views\Member\Login.cshtml" />
+    <Content Include="Views\Member\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
