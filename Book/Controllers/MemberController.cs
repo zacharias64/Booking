@@ -117,7 +117,25 @@ namespace Book.Controllers
 		}
 		public ActionResult Login()
 		{
+			GetUserProfileOut outModel = new GetUserProfileOut();
+			if (Session["UserID"] != null )
+			{
+				Session["UserID"] = null;
+				//ViewBag.logoutmes = "成功登出啦";
+				return RedirectToAction("Index", "Home"); ;
+			}
 			return View();
+			//if (Session["UserID"] != null )
+			//{
+			//	return View();
+			//}
+			//else
+			//         {
+			//	Session["UserID"] = "";
+			//	RedirectToAction("Home","Index");
+			//	return View();
+			//}
+
 		}
 		public ActionResult DoLogin(DoLoginIn inModel)
 		{
@@ -312,6 +330,10 @@ namespace Book.Controllers
 
 			// 回傳 Json 給前端
 			return Json(outModel);
+		}
+		public ActionResult EditPwd()
+		{
+			return View();
 		}
 		[ValidateAntiForgeryToken]
 		public ActionResult DoEditPwd(DoEditPwdIn inModel)
