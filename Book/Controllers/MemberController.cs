@@ -26,6 +26,12 @@ namespace Book.Controllers
 		{
 			DoRegisterOut outModel = new DoRegisterOut();
 
+			//if (Session["UserID"] != null || Session["UserID"].ToString() != "")
+			//{
+			//	outModel.ErrMsg = "你已經註冊過了了!!!!!";
+			//	return Json(outModel);
+			//}
+
 			if (string.IsNullOrEmpty(inModel.UserID) || string.IsNullOrEmpty(inModel.UserPwd) || string.IsNullOrEmpty(inModel.UserName) || string.IsNullOrEmpty(inModel.UserEmail))
 			{
 				outModel.ErrMsg = "請輸入資料";
@@ -118,28 +124,23 @@ namespace Book.Controllers
 		public ActionResult Login()
 		{
 			GetUserProfileOut outModel = new GetUserProfileOut();
+			GetUserProfileOut outtModel = new GetUserProfileOut();
+
+
 			if (Session["UserID"] != null )
 			{
 				Session["UserID"] = null;
+				Session["UserName"] = null;
+				Session["LogOut"] = 1;
 				//ViewBag.logoutmes = "成功登出啦";
 				return RedirectToAction("Index", "Home"); ;
 			}
 			return View();
-			//if (Session["UserID"] != null )
-			//{
-			//	return View();
-			//}
-			//else
-			//         {
-			//	Session["UserID"] = "";
-			//	RedirectToAction("Home","Index");
-			//	return View();
-			//}
-
 		}
 		public ActionResult DoLogin(DoLoginIn inModel)
 		{
 			DoLoginOut outModel = new DoLoginOut();
+			GetUserProfileOut outtModel = new GetUserProfileOut();
 
 			// 檢查輸入資料
 			if (string.IsNullOrEmpty(inModel.UserID) || string.IsNullOrEmpty(inModel.UserPwd))
@@ -185,14 +186,17 @@ namespace Book.Controllers
 					adpt.SelectCommand = cmd;
 					DataSet ds = new DataSet();
 					adpt.Fill(ds);
+					DataTable dw = ds.Tables[0];
 
 					if (ds.Tables[0].Rows.Count > 0)
 					{
+						outtModel.UserName = dw.Rows[0]["UserName"].ToString();
+						Session["UserName"] = outtModel.UserName;
 						// 有查詢到資料，表示帳號密碼正確
 
 						// 將登入帳號記錄在 Session 內
 						Session["UserID"] = inModel.UserID;
-
+						
 						outModel.ResultMsg = "登入成功";
 					}
 					else
@@ -266,6 +270,7 @@ namespace Book.Controllers
 					outModel.UserID = dt.Rows[0]["UserID"].ToString();
 					outModel.UserName = dt.Rows[0]["UserName"].ToString();
 					outModel.UserEmail = dt.Rows[0]["UserEmail"].ToString();
+					
 				}
 				else
 				{
