@@ -454,3 +454,9 @@ b{
     font: inherit;
     margin: 10;
 }
+
+.containerr {
+    padding: 40px 80px;
+    background-color: #fff;
+    border-radius: 8px;
+}

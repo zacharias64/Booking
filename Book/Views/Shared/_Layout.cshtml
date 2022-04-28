@@ -17,7 +17,14 @@
         </script>
         Session["LogOut"] = null;
     }
-    
+    @if (Session["NoLogin"] != null)
+    {
+        <script type="text/javascript">
+            alert("你還沒登入喔!");
+        </script>
+        Session["NoLogin"] = null;
+    }
+
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Symbols+Outlined" rel="stylesheet" />
     <script type="text/javascript">
@@ -88,12 +95,12 @@
             <h1><img src="/content/Images/book.png">  線上書店</h1>
         </div>
         <div class="menuStyle">
-            
-                @{ 
-                    if(Session["UserName"]!=null)
-                    {<a href="/Member/EditProfile"><span class="material-icons-outlined">park</span>哩賀<br>@Session["UserName"]</a>}
-                }
-            
+
+            @{
+                if (Session["UserName"] != null)
+                {<a href="/Member/EditProfile"><span class="material-icons-outlined">park</span>哩賀<br>@Session["UserName"]</a>}
+            }
+
             <a href="/"><span class="material-icons-outlined">home</span>首頁</a>
             <a href="/Member/Register"><span class="material-symbols-outlined">face_retouching_natural</span>註冊</a>
             <a href="/Member/Login"><span class="material-symbols-outlined">supervised_user_circle</span>登入/出</a>
@@ -114,6 +121,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     @RenderSection("scripts", required: false)

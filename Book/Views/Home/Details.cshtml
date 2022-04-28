@@ -16,6 +16,7 @@
             </div>
             <div class="type02_p003">
                 <ul>
+                    <li>書名：@Model.bTitle</li>
                     <li>原文書名：@Model.bOriginal</li>
                     <li>作者：@Model.bAuthor</li>
                     <li>出版年份：@Model.bYear</li>
@@ -25,13 +26,15 @@
                     <li>語言：@Model.bLaun</li>
                     <li>售價: <span class="red"> @Model.bMoney</span>元</li>
                     <li>
-                        @using (Html.BeginForm("Order", "Events", FormMethod.Post))
-                            {
+                        @*@using (Html.BeginForm("Order", "Events", FormMethod.Post))
+                        {
 
-                                <b>欲購買數量:</b> @Html.TextBox("many1", "1", new { style = "width: 30px;" }) <b>本</b>
-                                <p><input type="submit" value="加入購物車" /></p>
-                            }
-                        
+                            <b>欲購買數量:</b> @Html.TextBox("many1", "1", new { style = "width: 30px;" }) <b>本</b>
+                            <p><input type="submit" value="加入購物車" /></p>
+                        }*@
+                        <input name="many" type="number" placeholder="0">
+                        <a href="javascript:void(0);" onclick="AddToCart('@Model.bId')" class="btn btn-primary" role="button">加入購物車</a>
+
                     </li>
                 </ul>
             </div>
@@ -41,7 +44,9 @@
         <a>&nbsp;</a>
         <h3>內容介紹</h3>
 
-        <h4 class="font">
+        @*使讀取SQL資料時能吃到換行和排版<style="white-space: pre-line">*@
+
+        <h4 class="font" style="white-space: pre-line">
             @Model.bIntroduce
         </h4>
     </div>

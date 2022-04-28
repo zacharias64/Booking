@@ -37,7 +37,7 @@ namespace Book.Models
         public string bLaun { get; set; }
         [Display(Name = "介紹")]
         public string bIntroduce { get; set; }
-        [Display(Name = "圖片編號")]
+        [Display(Name = "圖片位置")]
         public string bURL { get; set; }
         [Display(Name = "數量")]
         public int bQuan { get; set; }

@@ -133,7 +133,7 @@ namespace Book.Controllers
 				Session["UserName"] = null;
 				Session["LogOut"] = 1;
 				//ViewBag.logoutmes = "成功登出啦";
-				return RedirectToAction("Index", "Home"); ;
+				return RedirectToAction("Index", "Home"); 
 			}
 			return View();
 		}

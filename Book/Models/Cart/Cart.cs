@@ -110,6 +110,21 @@ namespace Book.Models.Cart
             this.cartItems.Clear();
             return true;
         }
+        public List<Models.OrderDetail> ToOrderDetailList(int orderId)
+        {
+            var result = new List<Models.OrderDetail>();
+            foreach (var item in this.cartItems)
+            {
+                result.Add(new Models.OrderDetail()
+                {
+                    Name = item.bTitle,
+                    Price = item.bMoney,
+                    Quantity = item.Quantity,
+                    OrderId = orderId
+                });
+            }
+            return result;
+        }
 
         public IEnumerator<CartItem> GetEnumerator()
         {

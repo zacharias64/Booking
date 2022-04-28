@@ -26,5 +26,7 @@ namespace Book.Models
         }
     
         public virtual DbSet<BookList> BookList { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
     }
 }

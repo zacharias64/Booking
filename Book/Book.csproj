@@ -134,6 +134,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,6 +163,13 @@
     <Compile Include="Models\Cart\CartItem.cs" />
     <Compile Include="Models\Cart\Operation.cs" />
     <Compile Include="Models\OldVer\FakeDB.cs" />
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>Books.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>Books.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ship.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +207,7 @@
       <DependentUpon>Books.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\email-validation.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -237,6 +246,7 @@
     <Content Include="Views\Member\Login.cshtml" />
     <Content Include="Views\Member\EditProfile.cshtml" />
     <Content Include="Views\Member\EditPwd.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

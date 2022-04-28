@@ -13,7 +13,6 @@ namespace Book.Models.Member
 			public string UserID { get; set; }
 			public string UserPwd { get; set; }
 			public string UserName { get; set; }
-			[DataType(DataType.EmailAddress, ErrorMessage = "請輸入正確的電子信箱")]
 			public string UserEmail { get; set; }
 		}
 

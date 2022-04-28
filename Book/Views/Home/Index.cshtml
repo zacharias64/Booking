@@ -39,10 +39,13 @@
 <div class="row">
     @foreach (var booklist in this.Model)
     {
-        <div class="col-sm-6 col-md-4">
+        
+        <div class=" col-sm-6 col-md-4" >
             <div class="thumbnail">
-                <img  style="height: 300px; width: 225px;" src="@booklist.bURL" alt="商品圖片" />
-                <div class="caption">
+                <a href="@Url.Action("Details",new { id =booklist.bId})">
+                    <img href="@Url.Action("Details",new { id =booklist.bId})" style="height: 300px; width: 225px;" src="@booklist.bURL" alt="商品圖片" />
+                </a>
+                    <div class="caption">
                     <h3>@booklist.bTitle</h3>
                     <p>@booklist.bOriginal</p>
                     <p>作者:@booklist.bAuthor</p>
@@ -55,7 +58,7 @@
             </div>
         </div>
     }
-</div>
+    </div>
 
 
 
