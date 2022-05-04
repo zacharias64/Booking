@@ -1,10 +1,11 @@
-﻿@*@{
+﻿
+@*@{
 
     }*@
 @*@model List<Book.Models.BookList>*@
 
 @*<br />
-<h2 id="lef">首頁</h2>*@
+    <h2 id="lef">首頁</h2>*@
 @*<table>
         <tr>
             <th style="width:130px;">圖片</th>
@@ -32,33 +33,33 @@
 
 
 @*<div class="jumbotron">
-    <h2>蝦殼購物網 - 建置中</h2>
-    <h6><span></span>@Html.ActionLink("關於網站", "About", new { }, new { @class = "btn btn-primary btn-lg" })</h6>
-</div>*@
+        <h2>蝦殼購物網 - 建置中</h2>
+        <h6><span></span>@Html.ActionLink("關於網站", "About", new { }, new { @class = "btn btn-primary btn-lg" })</h6>
+    </div>*@
 
 <div class="row">
     @foreach (var booklist in this.Model)
     {
-        
-        <div class=" col-sm-6 col-md-4" >
-            <div class="thumbnail">
-                <a href="@Url.Action("Details",new { id =booklist.bId})">
-                    <img href="@Url.Action("Details",new { id =booklist.bId})" style="height: 300px; width: 225px;" src="@booklist.bURL" alt="商品圖片" />
-                </a>
-                    <div class="caption">
-                    <h3>@booklist.bTitle</h3>
-                    <p>@booklist.bOriginal</p>
-                    <p>作者:@booklist.bAuthor</p>
-                    <p class="red">價格:@booklist.bMoney</p>
-                    <p>
-                        <a href="javascript:void(0);" onclick="AddToCart('@booklist.bId')" class="btn btn-primary" role="button">加入購物車</a>
-                        <a href="@Url.Action("Details",new { id =booklist.bId})" class="btn btn-default" role="button">詳細資訊</a>
-                    </p>
-                </div>
+
+    <div class=" col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Details",new { id =booklist.bId})">
+                <img href="@Url.Action("Details",new { id =booklist.bId})" style="height: 300px; width: 225px;" src="@booklist.bURL" alt="商品圖片" />
+            </a>
+            <div class="caption">
+                <h3>@booklist.bTitle</h3>
+                <p>@booklist.bOriginal</p>
+                <p>作者:@booklist.bAuthor</p>
+                <p class="red">價格:@booklist.bMoney</p>
+                <p>
+                    <a href="javascript:void(0);" onclick="AddToCart('@booklist.bId')" class="btn btn-primary" role="button">加入購物車</a>
+                    <a href="@Url.Action("Details",new { id =booklist.bId})" class="btn btn-default" role="button">詳細資訊</a>
+                </p>
             </div>
         </div>
-    }
     </div>
+    }
+</div>
 
 
 

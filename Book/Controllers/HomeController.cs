@@ -63,9 +63,15 @@ namespace Book.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            List<Models.BookList> results = new List<Models.BookList>();
+            //使用CartsEntity類別 名稱玩db
+            using (Models.AllBookEntities1 db = new Models.AllBookEntities1())
+            {
+                //使用Linq抓取目前Products資料庫的所有資料
+                results = (from s in db.BookList select s).ToList();
+                //將result回傳給檢視
+                return View(results);
+            }
         }
 
         public ActionResult Contact()
