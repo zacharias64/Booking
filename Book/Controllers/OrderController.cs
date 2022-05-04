@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static Book.Models.Member.MemberModel;
 
 namespace Book.Controllers
 {
@@ -66,5 +69,39 @@ namespace Book.Controllers
 
             return View();
         }
+        public ActionResult MyOrder()
+        {
+            var UserId = (string)Session["UserId"];
+
+            using (Models.AllBookEntities1 db = new Models.AllBookEntities1())
+            {
+                var result = db.Order
+                    .Where(w => w.UserId == UserId)
+                    .Select(s => s).ToList();
+
+                return View(result);
+            }
+        }
+        public ActionResult MyOrderDetail(int id)
+        {
+            using (Models.AllBookEntities1 db = new Models.AllBookEntities1())
+            {
+                var result = (from s in db.OrderDetail
+                              where s.OrderId == id
+                              select s).ToList();
+
+                if (result.Count == 0)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(result);
+                }
+
+            }
+        }
+        
+
     }
 }

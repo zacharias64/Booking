@@ -11830,4 +11830,14 @@ a {
     padding-bottom: 1.5rem;
     padding-top: 1.5rem
 }
-/*# sourceMappingURL=app.css.map*/
+
+
+@font-face {
+    font-family: 'creamfont';
+    src: url('creamfont-2.1.otf');
+}
+
+.ch {
+    font-family: 'creamfont';
+}
+

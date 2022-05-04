@@ -1,0 +1,34 @@
+﻿@{
+    var currentCart = Book.Models.Cart.Operation.GetCurrentCart();
+}
+<a id="CartDropDown" class="dropdown-toggle" data-toggle="dropdown">
+    <span class="material-icons-outlined">shopping_cart</span>
+    @*@string.Format("共 {0} 元 ({1})", currentCart.TotalAmount, currentCart.Count)*@
+    @string.Format("購物車")
+    <span class="caret"></span>
+</a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="CartDropDown">
+    @if (currentCart.Any())
+    {
+        foreach (var item in currentCart)
+        {
+
+            <li class="col-xs-20">
+                @*col-xs-數字 調整欄寬*@
+                <span class="col-xs-9">@item.bTitle @item.bMoney 元 x @item.Quantity</span>
+                <span class="btn btn-danger col-xs-2" onclick="RemoveFromCart('@item.bId')">X</span>
+            </li>
+        }
+        <li class="col-xs-12">
+            @*col-xs-數字 調整欄寬*@
+            @string.Format("共 {0} 元 ", currentCart.TotalAmount)
+            <a @*class="btn btn-success text-center col-xs-6"*@ href="@Url.Action("Index","Order", new { })">結帳去</a>
+            <a @*class="btn btn-danger text-center col-xs-5"*@ onclick="ClearCart()">清空</a>
+        </li>
+    }
+    else
+    {
+        <li><a class="text-center">還沒選書呢</a></li>
+    }
+</ul>
+

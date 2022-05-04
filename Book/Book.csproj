@@ -170,7 +170,6 @@
     <Compile Include="Models\OrderDetail.cs">
       <DependentUpon>Books.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PartialClass.cs" />
     <Compile Include="Models\Ship.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -182,7 +181,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\book.png" />
     <Content Include="Content\Images\guidien.jpg" />
+    <Content Include="Content\Images\l1.jpg" />
+    <Content Include="Content\Images\l2.jpg" />
+    <Content Include="Content\Images\l3.jpg" />
     <Content Include="Content\Images\xiao.jpg" />
+    <Content Include="Content\apo.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -209,6 +212,7 @@
     <Content Include="Models\Books.edmx.diagram">
       <DependentUpon>Books.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\creamfont-2.1.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\email-validation.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -253,6 +257,9 @@
     <Content Include="Views\ManageOrder\Index.cshtml" />
     <Content Include="Views\ManageOrder\Details.cshtml" />
     <Content Include="Views\Shared\_NewLayout.cshtml" />
+    <Content Include="Views\Order\MyOrder.cshtml" />
+    <Content Include="Views\Order\MyOrderDetail.cshtml" />
+    <Content Include="Views\Shared\_CartPartial%28原購物車%29.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
