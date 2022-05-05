@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "MyOrderDetail";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
-<h2>@string.Format("訂單編號{0}商品列表", this.Model.First().Id)</h2>
+@*<h2>@string.Format("訂單編號{0}商品列表", this.Model.First().Id)</h2>
 <hr />
 <table class="table">
     <tr>
@@ -27,5 +28,47 @@
         </tr>
     }
 </table>
-@Html.ActionLink("回商品列表", "MyOrder", new { }, new { @class = "btn btn-default" })
+@Html.ActionLink("回商品列表", "MyOrder", new { }, new { @class = "btn btn-default" })*@
 
+<div class="pt-5">
+    <main class="main pt-5">
+        <div class="container pt-5">
+            @Html.ActionLink("回商品列表", "MyOrder", new { }, new { @class = "btn btn-default" })
+            <article class="card card-outline mb-4">
+                <div class="card-body">
+                    <header>
+                        <h4 class="card-title ch">@string.Format("訂單編號{0}商品列表", this.Model.First().Id)</h4>
+                    </header>
+
+                    <table class="table">
+                        @*<caption>Optional table caption.</caption>*@
+                        <thead class="ch">
+                            <tr>
+                                <th>商品名稱</th>
+                                <th>商品價格</th>
+                                <th>購買數量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </div>
+    </main>
+</div>

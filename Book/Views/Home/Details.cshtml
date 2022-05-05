@@ -1,10 +1,111 @@
-﻿
-@{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
-<br />
+
+<body>
+
+
+
+    <main class="main pt-5">
+
+        <div class="container pt-5">
+
+            <div class="row">
+                <div class="col-md-9">
+
+                    <article class="card mb-4">
+                        <header class="card-header">
+                            <div class="card-meta">
+                                <a href="#">@Model.bOriginal</a>
+                            </div>
+                            <a href="">
+                                <h4 class="card-title">@Model.bTitle</h4>
+                            </a>
+                        </header>
+                        <a href="post-image.html">
+                            <img class="card-img w-50" src="@Model.bURL" alt="">
+                        </a>
+                        <div class="card-body" style="white-space: pre-line">
+                            <p class="card-text">@Model.bIntroduce</p>
+                        </div>
+                        @*<h4 class="font" style="white-space: pre-line">
+                            @Model.bIntroduce
+                        </h4>*@
+                    </article><!-- /.card -->
+
+
+
+                </div>
+                <div class="col-md-3 ms-auto">
+
+                    <aside class="sidebar">
+                        <div class="card mb-4 ch">
+                            <div class="card-body">
+                                <h4 class="card-title ch">作者</h4>
+                                <p class="card-text">@Model.bAuthor</p>
+                            </div>
+                        </div><!-- /.card -->
+                    </aside>
+                    <aside class="sidebar">
+                        <div class="card mb-4 ch">
+                            <div class="card-body">
+                                <h4 class="card-title ch">出版資訊</h4>
+                                <p class="card-text">出版年份 : @Model.bISBN</p>
+                                <p class="card-text">出版年份 : @Model.bYear</p>
+                                <p class="card-text">出版社 : @Model.bPubHouse</p>
+
+                            </div>
+                        </div><!-- /.card -->
+                    </aside>
+                    <aside class="sidebar">
+                        <div class="card mb-4 ch">
+                            <div class="card-body">
+                                <h4 class="card-title ch">詳細資訊</h4>
+                                <p class="card-text">翻者 : @Model.bTrans</p>
+                                <p class="card-text">語言 : @Model.bLaun</p>
+
+                            </div>
+                        </div><!-- /.card -->
+                    </aside>
+
+                    <aside class="sidebar sidebar-sticky">
+                        <!--<div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">Tags</h4>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Journey</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Work</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Lifestype</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Photography</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Food &amp; Drinks</a>
+                            </div>
+                        </div>--><!-- /.card -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title ch">加入購物車</h4>
+                                <a href="" class="d-inline-block mt-3">
+                                    <h4 class="h6">金額 @Model.bMoney 元</h4>
+                                </a>
+                                <div class="input-group mb-3">
+                                    <a class="btn btn-outline-secondary"  id="" href="javascript:void(0);"  onclick="AddToCart('@Model.bId')">Add</a>
+                                    <input type="text" class="form-control" placeholder="1" >
+                                </div>
+
+
+                            </div>
+                        </div><!-- /.card -->
+                    </aside>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+</body>
+
+<!--<br />
 <div class="container">
     <div class="grid_1 ">
         <div class="grid_2 alpha">
@@ -25,14 +126,14 @@
                     <li>譯者：@Model.bTrans</li>
                     <li>語言：@Model.bLaun</li>
                     <li>售價: <span class="red"> @Model.bMoney</span>元</li>
-                    <li>
+                    <li>-->
                         @*@using (Html.BeginForm("Order", "Events", FormMethod.Post))
-                        {
+                            {
 
-                            <b>欲購買數量:</b> @Html.TextBox("many1", "1", new { style = "width: 30px;" }) <b>本</b>
-                            <p><input type="submit" value="加入購物車" /></p>
-                        }*@
-                        <input name="many" type="number" placeholder="0">
+                                <b>欲購買數量:</b> @Html.TextBox("many1", "1", new { style = "width: 30px;" }) <b>本</b>
+                                <p><input type="submit" value="加入購物車" /></p>
+                            }*@
+                        <!--<input name="many" type="number" placeholder="0">
                         <a href="javascript:void(0);" onclick="AddToCart('@Model.bId')" class="btn btn-primary" role="button">加入購物車</a>
 
                     </li>
@@ -42,15 +143,15 @@
     </div>
     <div class="grid_1" style="height:auto;">
         <a>&nbsp;</a>
-        <h3>內容介紹</h3>
+        <h3>內容介紹</h3>-->
 
         @*使讀取SQL資料時能吃到換行和排版<style="white-space: pre-line">*@
 
-        <h4 class="font" style="white-space: pre-line">
+        <!--<h4 class="font" style="white-space: pre-line">
             @Model.bIntroduce
         </h4>
     </div>
 
-</div>
+</div>-->
 
 

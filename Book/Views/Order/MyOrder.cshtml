@@ -2,12 +2,10 @@
 
 @{
     ViewBag.Title = "MyOrder";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
-<h2>我的訂單</h2>
-
-
-<table class="table">
+@*<table class="table">
     <tr>
         <th>購買會員暱稱</th>
         <th>收貨人姓名</th>
@@ -35,4 +33,53 @@
         </tr>
     }
 
-</table>
+</table>*@
+
+<div class="pt-5">
+    <main class="main pt-5">
+        <div class="container pt-5">
+
+            <article class="card card-outline mb-4">
+                <div class="card-body">
+                    <header>
+                        <h4 class="card-title ch">我的訂單</h4>
+                    </header>
+
+                    <table class="table">
+                        @*<caption>Optional table caption.</caption>*@
+                        <thead class="ch">
+                            <tr>
+                                <th>購買會員暱稱</th>
+                                <th>收貨人姓名</th>
+                                <th>收貨人電話</th>
+                                <th>收貨人住址</th>
+                                <th class="center-block">明細</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Session["UserName"]</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RecieverName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RecieverPhone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RecieverAddress)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("ClickMe!", "MyOrderDetail", new { id = item.Id }, new { @class = "" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </div>
+    </main>
+</div>

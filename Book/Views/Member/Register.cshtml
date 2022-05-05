@@ -2,18 +2,107 @@
 @{
     ViewBag.Title = "Register";
 }
-
-<h2>&nbsp</h2>
-
 @*<div class="container" id="app">
-    <div :class="['input-group', isEmailValid()]">
+        <div :class="['input-group', isEmailValid()]">
 
-        <input type="email" class="form-control" placeholder="Email Address" v-model="form.UserEmail" />
-    </div>
-</div>*@
-<div id="VuePage">
+            <input type="email" class="form-control" placeholder="Email Address" v-model="form.UserEmail" />
+        </div>
+    </div>*@
+
+@{
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+<body>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container" id="VuePage">
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="https://bobowin.blog/wp-content/uploads/20191217002034_93.jpg" alt="login" class="login-card-img">
+                        <p class="text-white font-weight-medium text-center flex-grow align-self-end footer-link text-small">
+                            Bøoking mission is to accelerate the world’s transition to sustainable energy.
+                        </p>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <!--<div class="brand-wrapper">
+        <a class="navbar-brand mx-auto order-1 order-md-3"><h1>Bøoking</h1></a>-->
+                            @*<img src="assets/images/logo.svg" alt="logo" class="logo">*@
+                            <!--</div>-->
+                            <p class="login-card-description">Register your account</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="account" class="sr-only">Account</label>
+                                    <input type="text" name="email" id="email" class="form-control" placeholder="一經註冊無法更改" v-model="form.UserID">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="password" class="sr-only">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="請輸入密碼" v-model="form.UserPwd">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="text" class="sr-only">Name</label>
+                                    <input type="text" name="name" id="password" class="form-control" placeholder="Elon Musk" v-model="form.UserName">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="email" class="sr-only">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="booking@gmail.com" v-model="form.UserEmail">
+                                </div>
+                                @*<input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login" >*@
+                                <button type="button" class="btn btn-block login-btn mb-4" v-on:click="DoRegister()">註冊</button>
+                            </form>
+
+                            @*<div class="panel-body">
+                                <div class="form-group">
+                                    <label>帳號</label>
+                                    <input type="text" class="form-control" v-model="form.UserID" placeholder="一經註冊無法更改">
+                                </div>
+                                <div class="form-group">
+                                    <label>密碼</label>
+                                    <input type="password" class="form-control" v-model="form.UserPwd" placeholder="請輸入密碼">
+                                </div>
+                                <div class="form-group">
+                                    <label>姓名</label>
+                                    <input type="text" class="form-control" v-model="form.UserName" placeholder="請輸入姓名">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" v-model="form.UserEmail" placeholder="booking@gmail.com"
+                                           maxLength="30" id="mailval" />
+                                </div>
+
+                            </div>
+                            <div class="panel-footer">
+                                <button type="button" class="btn btn-primary" style="background-color: #ffc978; border-color: #ffc978;" v-on:click="DoRegister()">註冊</button>
+                            </div>*@
+
+                            @*<p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>*@
+                            <nav class="login-card-footer-nav">
+                                <a href="#!">Copyright © Since 2022 Booking All Rights Reserved.</a>
+                                @*<a href="#!">Privacy policy</a>*@
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="ErrorAlert" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">錯誤訊息</h4>
+                    </div>
+                    <div class="modal-body" id="ErrorMsg" style="overflow-x:auto;width:100%;">
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </main>
+</body>
+<!--<div id="VuePage">-->
     <!--使用 Bootstrap 設計註冊表單-->
-    <div class="panel panel-primary" style="border-color: #ffc978;">
+    <!--<div class="panel panel-primary" style="border-color: #ffc978;">
         <div class="panel-heading" style="background-color: #ffc978; border-color: #ffc978; ">會員註冊</div>
         <div class="panel-body">
             <div class="form-group">
@@ -28,20 +117,20 @@
                 <label>姓名</label>
                 <input type="text" class="form-control" v-model="form.UserName" placeholder="請輸入姓名">
             </div>
-            <div class="form-group" >
+            <div class="form-group">
                 <label>Email</label>
                 <input type="email" class="form-control" v-model="form.UserEmail" placeholder="booking@gmail.com"
-                        maxLength="30" id="mailval"  />
+                       maxLength="30" id="mailval" />
             </div>
 
         </div>
         <div class="panel-footer">
             <button type="button" class="btn btn-primary" style="background-color: #ffc978; border-color: #ffc978;" v-on:click="DoRegister()">註冊</button>
         </div>
-    </div>
-    
+    </div>-->
+
     <!--使用 Bootstrap Modal 樣式，當執行有錯誤時，顯示錯誤訊息-->
-    <div class="modal fade" id="ErrorAlert" tabindex="-1" role="dialog">
+    <!--<div class="modal fade" id="ErrorAlert" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -51,12 +140,12 @@
                 <div class="modal-body" id="ErrorMsg" style="overflow-x:auto;width:100%;">
 
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-</div>
+            </div>--><!-- /.modal-content -->
+        <!--</div>--><!-- /.modal-dialog -->
+    <!--</div>--><!-- /.modal -->
+<!--</div>-->
 @section scripts {
-    <script >
+    <script>
         var VuePage = new Vue({
             el: '#VuePage'
             , data: function () {

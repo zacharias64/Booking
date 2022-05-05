@@ -8,6 +8,23 @@
     <title>@ViewBag.Title 線上書店</title>
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/bootstrap")
+
+    @if (Session["LogOut"] != null)
+    {
+        <script type="text/javascript">
+            alert("登出成功!");
+        </script>
+        Session["LogOut"] = null;
+    }
+
+    @if (Session["NoLogin"] != null)
+    {
+        <script type="text/javascript">
+            alert("你還沒登入喔!");
+        </script>
+        Session["NoLogin"] = null;
+    }
+
     <script type="text/javascript">
         $(document).ready(function () {
             //網頁載入完成時，執行的 function
@@ -31,6 +48,7 @@
                 success: function (message) {
                     $('#CartDropDown').html(message);
                     console.log(productId + "已加入");
+                    alert('添加成功');
                 }
             });
 
@@ -93,8 +111,8 @@
                         <li class="nav-item dropdown ch" style="font-size:16px;">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">會員中心</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown02">
-                                <a class="dropdown-item" href="post-image.html">修改資料</a>
-                                <a class="dropdown-item" href="post-video.html">確認訂單</a>
+                                <a class="dropdown-item" href="/Member/EditProfile">修改資料</a>
+                                <a class="dropdown-item" href="/Order/MyOrder">確認訂單</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown ch" style="font-size:16px;">
