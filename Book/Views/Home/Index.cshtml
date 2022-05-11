@@ -1,12 +1,12 @@
-﻿@if ((string)Session["UserId"] == "Admin")
+﻿@if (Session["Admin"] != null)
 {
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-   
+    { Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
 }
 else
 {
-    Layout = "~/Views/Shared/_NewLayout.cshtml";
-    
+    { Layout = "~/Views/Shared/_NewLayout.cshtml"; }
+
 }
 
 @*@{
@@ -129,21 +129,21 @@ else
 
                     <article class="card mb-4">
 
-                        <a href="post-image.html">
+                        <a href="@Url.Action("Details",new { id =booklist.bId})">
                             <img class="card-img" src="@booklist.bURL" alt="">
                         </a>
                         <header class="card-header">
-                            <a href="post-image.html">
+                            <a href="@Url.Action("Details",new { id =booklist.bId})">
                                 <h4 class="card-title ch">@booklist.bTitle</h4>
                             </a>
                             <div class="card-meta">
-                                <a href="#">@booklist.bAuthor</a>
+                                <a href="@Url.Action("Details",new { id =booklist.bId})">@booklist.bAuthor</a>
                             </div>
                             <div class="card-meta">
-                                <a href="#">價格:@booklist.bMoney</a>
+                                <a href="@Url.Action("Details",new { id =booklist.bId})">價格:@booklist.bMoney</a>
                             </div>
                             <div class="card-meta ellipsis">
-                                <a href="#">價格:@booklist.bIntroduce</a>
+                                <a href="@Url.Action("Details",new { id =booklist.bId})">價格:@booklist.bIntroduce</a>
                             </div>
                             <div class="card-meta d-grid gap-2 d-md-flex justify-content-md-end">
                                 <a href="javascript:void(0);" onclick="AddToCart('@booklist.bId')" class="btn btn-link" style="color: #212529;" role="button">加入購物車</a>

@@ -126,7 +126,7 @@ namespace Book.Controllers
 			GetUserProfileOut outModel = new GetUserProfileOut();
 			GetUserProfileOut outtModel = new GetUserProfileOut();
 
-
+			
 			if (Session["UserID"] != null )
 			{
 				Session["UserID"] = null;
@@ -141,7 +141,10 @@ namespace Book.Controllers
 		{
 			DoLoginOut outModel = new DoLoginOut();
 			GetUserProfileOut outtModel = new GetUserProfileOut();
-
+			if(inModel.UserID=="admin")
+            {
+				Session["Admin"] = 1;
+			}
 			// 檢查輸入資料
 			if (string.IsNullOrEmpty(inModel.UserID) || string.IsNullOrEmpty(inModel.UserPwd))
 			{

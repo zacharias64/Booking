@@ -1,31 +1,95 @@
 ﻿@model IEnumerable<Book.Models.Order>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>訂單列表</h2>
+@if (Session["Admin"] != null)
+{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <div class="pt-5">
+        <main class="main pt-5">
+            <div class="container pt-5">
 
-<table class="table">
-    <tr>
-        <th>購買會員編號</th>
-        <th>收貨人姓名</th>
-        <th>收貨人電話</th>
-        <th>收貨人住址</th>
-        <th></th>
-    </tr>
+                <article class="card card-outline mb-4">
+                    <div class="card-body">
+                        <header>
+                            <h4 class="card-title ch">訂單列表</h4>
+                        </header>
 
-    @foreach (var item in Model)
-    {
+                        <table class="table">
+                            @*<caption>Optional table caption.</caption>*@
+                            <thead class="ch">
+                                <tr>
+                                    <th>購買會員編號</th>
+                                    <th>收貨人姓名</th>
+                                    <th>收貨人電話</th>
+                                    <th>收貨人住址</th>
+                                    <th class="center-block">訂單明細</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecieverName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecieverPhone)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecieverAddress)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("ClickMe!", "Details", new { id = item.Id }, new { @class = "" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+}
+else
+{
+    <script type="text/javascript">
+        alert("無權限進入");
+        location.href = "/Home/index";
+    </script>
+
+}
+
+
+@*<h2>訂單列表</h2>
+
+    <table class="table">
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.UserId)</td>
-            <td>@Html.DisplayFor(modelItem => item.RecieverName)</td>
-            <td>@Html.DisplayFor(modelItem => item.RecieverPhone)</td>
-            <td>@Html.DisplayFor(modelItem => item.RecieverAddress)</td>
-            <td>
-                @Html.ActionLink("商品明細", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
-            </td>
+            <th>購買會員編號</th>
+            <th>收貨人姓名</th>
+            <th>收貨人電話</th>
+            <th>收貨人住址</th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.UserId)</td>
+                <td>@Html.DisplayFor(modelItem => item.RecieverName)</td>
+                <td>@Html.DisplayFor(modelItem => item.RecieverPhone)</td>
+                <td>@Html.DisplayFor(modelItem => item.RecieverAddress)</td>
+                <td>
+                    @Html.ActionLink("商品明細", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+

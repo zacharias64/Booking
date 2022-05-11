@@ -2,63 +2,94 @@
 @model List<Book.Models.BookList>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 
 }
-
-<h2>上架列表</h2>
-
-
-@if (ViewBag.ResultMessage != null) //判斷如果有訊息，則顯示。
+@if (Session["Admin"] != null)
 {
-    @Html.Label("info", (string)ViewBag.ResultMessage, new { @class = "text-info" })
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    if (ViewBag.ResultMessage != null) //判斷如果有訊息，則顯示。
+    {
+        @Html.Label("info", (string)ViewBag.ResultMessage, new { @class = "text-info" })
+
+    }
+
+    <div class="pt-5">
+        <main class="main pt-5">
+            <div class="container pt-5">
+
+                <article class="card card-outline mb-4">
+                    <div class="card-body">
+                        <header>
+                            <h4 class="card-title ch">上架列表</h4>
+                        </header>
+
+                        <table class="table">
+                            @*<caption>Optional table caption.</caption>*@
+                            <thead class="ch">
+                                <tr>
+                                    <th class="text-center">商品圖</th>
+                                    <th class="text-center">編號</th>
+                                    <th class="text-center">名稱</th>
+                                    <th class="text-center">作者</th>
+                                    <th class="text-center">售量</th>
+                                    <th class="text-center">庫存</th>
+                                    <th class="text-center">修改</th>
+                                    <th class="text-center">刪除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var pd in Model)
+                                {
+                                    <tr>
+
+                                        <td class="text-center"><img src="@pd.bURL" width="50" height="50" /></td>
+                                        <td class="text-center">@pd.bId</td>
+                                        <td class="text-center">@pd.bTitle</td>
+                                        <td class="text-center">@pd.bAuthor</td>
+                                        <td class="text-center">@pd.bMoney</td>
+                                        <td class="text-center">@pd.bQuan</td>
+
+                                        <td class="text-center">
+                                            @*在Index頁面中，新增[編輯]與[刪除]的ActionLink，幫助使用者轉導至對應頁面*@
+                                            @Html.ActionLink("編輯", "Edit", new { id = pd.bId }, new { @class = "btn btn-default" })
+
+                                        </td>
+
+                                        <td class="text-center">
+                                            @*將原本使用ActionLink的刪除按鈕改為使用BeginForm(行25)，並且將id設定為隱藏欄位(行27)，按鈕改為直接使用HTML input元素，型態為submit*@
+                                            @*刪除是很重要的操作，如果使用者直接在網址列輸入網址就可以刪除的話，其實是很危險的一件事情，所以我們選擇使用Post來完成。*@
+                                            @using (Html.BeginForm("Delete", "Edit", FormMethod.Post, new { @class = "" }))
+                                            {
+                                                @Html.Hidden("id", pd.bId)
+                                                <input type="submit" value="刪除" class="btn btn-default" />
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+}
+else
+{
+    <script type="text/javascript">
+        alert("無權限進入");
+        location.href = "/Home/index";
+    </script>
 
 }
+
+
+
+
+
 
 
 @*@Html.ActionLink("新增商品", "Create")*@
 
-<table class="table">
-    <thead>
-        <tr>
-            <td>商品圖</td>
-            <td>編號</td>
-            <td>名稱</td>
-            <td>作者</td>
-            <td>售價</td>
-            <td>庫存</td>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var pd in this.Model)
-        {
-            <tr>
-
-                <td><img src="@pd.bURL" width="50" height="50" /></td>
-                <td>@pd.bId</td>
-                <td>@pd.bTitle</td>
-                <td>@pd.bAuthor</td>
-                <td>@pd.bMoney</td>
-                <td>@pd.bQuan</td>
-
-                <td>
-                    @*在Index頁面中，新增[編輯]與[刪除]的ActionLink，幫助使用者轉導至對應頁面*@
-                    @Html.ActionLink("編輯", "Edit", new { id = pd.bId }, new { @class = "cusbutton" })
-                        
-                </td>
-
-                <td>
-                    @*將原本使用ActionLink的刪除按鈕改為使用BeginForm(行25)，並且將id設定為隱藏欄位(行27)，按鈕改為直接使用HTML input元素，型態為submit*@
-                    @*刪除是很重要的操作，如果使用者直接在網址列輸入網址就可以刪除的話，其實是很危險的一件事情，所以我們選擇使用Post來完成。*@
-                    @using (Html.BeginForm("Delete", "Edit", FormMethod.Post, new { @class = "Delete" }))
-                    {
-                        @Html.Hidden("id", pd.bId)
-                        <input type="submit" value="刪除" class="btn btn-default" />
-                    }
-                </td>
-
-            </tr>
-        }
-    </tbody>
-</table>

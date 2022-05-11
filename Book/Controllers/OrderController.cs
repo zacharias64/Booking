@@ -17,7 +17,7 @@ namespace Book.Controllers
             if (Session["UserID"] == null)
             {
                 Session["NoLogin"] = 1;
-                return RedirectToAction("Login", "Member"); ;
+                return RedirectToAction("Login", "Member") ;
             }
             return View();
         }
@@ -64,13 +64,16 @@ namespace Book.Controllers
                     db.OrderDetail.AddRange(orderDetails);
                     db.SaveChanges();
                 }
-                return Content("訂購成功");
+                
+                return RedirectToAction("MyOrder", "Order");
             }
 
             return View();
         }
         public ActionResult MyOrder()
         {
+            
+
             var UserId = (string)Session["UserId"];
 
             using (Models.AllBookEntities1 db = new Models.AllBookEntities1())

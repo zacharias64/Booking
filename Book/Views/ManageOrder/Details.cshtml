@@ -3,37 +3,94 @@
 
 @{
     ViewBag.Title = "Details";
+}
+@if ((string)Session["UserId"] == "Admin")
+{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <div class="pt-5">
+        <main class="main pt-5">
+            <div class="container pt-5">
+
+                <article class="card card-outline mb-4">
+                    <div class="card-body">
+                        <header>
+                            <h4 class="card-title ch">@string.Format("訂單編號 {0} 商品列表", this.Model.First().Id)</h4>
+                        </header>
+
+                        <table class="table">
+                            @*<caption>Optional table caption.</caption>*@
+                            <thead class="ch">
+                                <tr>
+                                    <th>商品名稱</th>
+                                    <th>商品價格</th>
+                                    <th>購買數量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(m => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(m => item.Price)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(m => item.Quantity)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <p>
+                            @Html.ActionLink("回商品列表", "Index", new { }, new { @class = "" })
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+}
+else
+{
+    <script type="text/javascript">
+        alert("無權限進入");
+        location.href = "/Home/index";
+    </script>
+
 }
 
-<h2>@string.Format("訂單編號 {0} 商品列表", this.Model.First().Id)</h2>
-<hr />
+@*<h2>@string.Format("訂單編號 {0} 商品列表", this.Model.First().Id)</h2>
+    <hr />
 
 
-<table class="table">
-    <tr>
-        <th>商品名稱</th>
-        <th>商品價格</th>
-        <th>購買數量</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(m => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Quantity)
-            </td>
+            <th>商品名稱</th>
+            <th>商品價格</th>
+            <th>購買數量</th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Quantity)
+                </td>
+            </tr>
+        }
 
-<p>
-    @Html.ActionLink("回商品列表", "Index", new { }, new { @class = "btn btn-default" })
-</p>
+    </table>
+
+    <p>
+        @Html.ActionLink("回商品列表", "Index", new { }, new { @class = "btn btn-default" })
+    </p>*@
+

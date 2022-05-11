@@ -6,34 +6,34 @@
 }
 
 @*<table class="table">
-    <tr>
-        <th>購買會員暱稱</th>
-        <th>收貨人姓名</th>
-        <th>收貨人電話</th>
-        <th>收貨人住址</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
         <tr>
-            <td>@Session["UserName"]</td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecieverName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecieverPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecieverAddress)
-            </td>
-            <td>
-                @Html.ActionLink("商品明細", "MyOrderDetail", new { id = item.Id }, new { @class = "btn btn-default" })
-            </td>
+            <th>購買會員暱稱</th>
+            <th>收貨人姓名</th>
+            <th>收貨人電話</th>
+            <th>收貨人住址</th>
+            <th></th>
         </tr>
-    }
 
-</table>*@
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Session["UserName"]</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecieverName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecieverPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecieverAddress)
+                </td>
+                <td>
+                    @Html.ActionLink("商品明細", "MyOrderDetail", new { id = item.Id }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
+
+    </table>*@
 
 <div class="pt-5">
     <main class="main pt-5">
@@ -83,3 +83,5 @@
         </div>
     </main>
 </div>
+
+ 
